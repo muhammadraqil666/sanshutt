@@ -42,7 +42,6 @@ export default function WeddingGallery() {
                         style={{ animationDelay: `${index * 0.1}s` }}
                     >
                         {/* Image Container */}
-                        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
                         <div
                             className="relative w-full overflow-hidden bg-gray-100 mb-6 rounded-sm cursor-zoom-in"
                             onClick={(e) => {
