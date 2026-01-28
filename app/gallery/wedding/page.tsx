@@ -42,8 +42,9 @@ export default function WeddingGallery() {
                         style={{ animationDelay: `${index * 0.1}s` }}
                     >
                         {/* Image Container */}
-                        <div
-                            className="relative w-full overflow-hidden bg-gray-100 mb-6 rounded-sm cursor-zoom-in"
+                        <button
+                            type="button"
+                            className="relative w-full overflow-hidden bg-gray-100 mb-6 rounded-sm cursor-zoom-in text-left p-0 border-0 focus:outline-none focus:ring-2 focus:ring-[#083316]/20 transition-all"
                             onClick={(e) => {
                                 e.preventDefault(); // Prevent navigation when clicking image
                                 e.stopPropagation();
@@ -62,7 +63,7 @@ export default function WeddingGallery() {
                             <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 bg-white/80 p-1.5 rounded-full backdrop-blur-sm">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#083316]"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
                             </div>
-                        </div>
+                        </button>
 
                         {/* Info */}
                         <div className="flex flex-col items-center text-center gap-2">
