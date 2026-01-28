@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import Reveal from '../components/Reveal';
 
 const categories = [
   {
@@ -45,32 +46,34 @@ export default function Gallery() {
       {/* Left: Interactive List */}
       <div className="relative z-10 w-full md:w-1/2 min-h-screen flex flex-col justify-center px-8 md:px-24 py-32 bg-[#F4F9F6]/90 md:bg-[#F4F9F6]">
 
-        <div className="mb-16 animate-fade-in-down">
-          <h1 className="text-4xl font-serif text-[#1a4a2e] mb-2">The Archive</h1>
-          <p className="text-xs font-sans tracking-widest text-[#083316]/50 uppercase">Select a Category</p>
-        </div>
+        <Reveal>
+          <div className="mb-16">
+            <h1 className="text-4xl font-serif text-[#1a4a2e] mb-2">The Archive</h1>
+            <p className="text-xs font-sans tracking-widest text-[#083316]/50 uppercase">Select a Category</p>
+          </div>
+        </Reveal>
 
         <div className="flex flex-col gap-8">
           {categories.map((cat, index) => (
-            <Link
-              key={cat.id}
-              href={cat.link}
-              className="group flex items-baseline gap-6 cursor-pointer animate-fade-in-up"
-              style={{ animationDelay: `${index * 0.1}s` }}
-              onMouseEnter={() => {
-                setActiveImage(cat.image);
-                setActiveIndex(index);
-              }}
-            >
-              <span className={`text-sm font-sans font-bold tracking-widest transition-colors duration-300 ${activeIndex === index ? 'text-[#083316]' : 'text-[#083316]/20'}`}>
-                {cat.id}
-              </span>
-              <div className="flex flex-col">
-                <h2 className={`text-4xl md:text-5xl font-serif italic transition-all duration-500 ${activeIndex === index ? 'text-[#1a4a2e] translate-x-4' : 'text-[#083316]/20'}`}>
-                  {cat.name}
-                </h2>
-              </div>
-            </Link>
+            <Reveal key={cat.id} delay={index * 0.1} className="w-full">
+              <Link
+                href={cat.link}
+                className="group flex items-baseline gap-6 cursor-pointer" // Removed animate-fade-in-up from here as Reveal handles it
+                onMouseEnter={() => {
+                  setActiveImage(cat.image);
+                  setActiveIndex(index);
+                }}
+              >
+                <span className={`text-sm font-sans font-bold tracking-widest transition-colors duration-300 ${activeIndex === index ? 'text-[#083316]' : 'text-[#083316]/20'}`}>
+                  {cat.id}
+                </span>
+                <div className="flex flex-col">
+                  <h2 className={`text-4xl md:text-5xl font-serif italic transition-all duration-500 ${activeIndex === index ? 'text-[#1a4a2e] translate-x-4' : 'text-[#083316]/20'}`}>
+                    {cat.name}
+                  </h2>
+                </div>
+              </Link>
+            </Reveal>
           ))}
         </div>
 
