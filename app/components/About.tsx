@@ -23,7 +23,7 @@ export default function About() {
                 </div>
 
                 {/* Center Text */}
-                <div className="relative z-20 max-w-md text-center md:text-left lg:ml-32 py-12">
+                <div className="relative z-20 max-w-md text-center md:text-left lg:ml-80 py-12">
 
                     <p className="text-xs font-bold tracking-[0.3em] text-[#083316]/30 uppercase mb-6">Archive 01</p>
 
