@@ -6,10 +6,10 @@ export default function About() {
     return (
         <section className="relative w-full min-h-screen bg-[#F4F9F6] flex items-center justify-center overflow-hidden">
 
-            <div className="w-full max-w-5xl px-8 relative flex flex-col items-center justify-center min-h-[500px]">
+            <div className="w-full max-w-5xl px-8 relative flex flex-col md:flex-row lg:block items-center justify-center min-h-[500px] gap-12 lg:gap-0">
 
                 {/* Floating Image 1 (Top Left) */}
-                <div className="md:absolute md:top-20 md:left-0 w-64 md:w-64 aspect-[3/4] mb-12 md:mb-0 transform rotate-1 md:-rotate-2 hover:rotate-0 transition-transform duration-500 ease-out z-10">
+                <div className="lg:absolute lg:top-20 lg:left-0 w-64 md:w-56 lg:w-64 aspect-[3/4] transform rotate-1 md:-rotate-2 hover:rotate-0 transition-transform duration-500 ease-out z-10">
                     <div className="relative w-full h-full grayscale hover:grayscale-0 transition-all duration-700 shadow-lg bg-white p-2 pb-6 rounded-sm">
                         <div className="relative w-full h-full overflow-hidden">
                             <Image
@@ -23,7 +23,7 @@ export default function About() {
                 </div>
 
                 {/* Center Text */}
-                <div className="relative z-20 max-w-md text-center md:text-left md:ml-24 py-12">
+                <div className="relative z-20 max-w-md text-center md:text-left lg:ml-32 py-12">
 
                     <p className="text-xs font-bold tracking-[0.3em] text-[#083316]/30 uppercase mb-6">Archive 01</p>
 
@@ -41,7 +41,7 @@ export default function About() {
                 </div>
 
                 {/* Floating Image 2 (Bottom Right) */}
-                <div className="md:absolute md:bottom-0 md:right-0 w-48 md:w-64 aspect-[4/3] mt-8 md:mt-0 transform md:rotate-2 hover:rotate-0 transition-transform duration-500 ease-out z-10">
+                <div className="lg:absolute lg:bottom-0 lg:right-0 w-64 md:w-56 lg:w-64 aspect-[4/3] transform md:rotate-2 hover:rotate-0 transition-transform duration-500 ease-out z-10">
                     <div className="relative w-full h-full grayscale hover:grayscale-0 transition-all duration-700 shadow-lg bg-white p-2 pb-6 rounded-sm">
                         <div className="relative w-full h-full overflow-hidden">
                             <Image
@@ -55,7 +55,7 @@ export default function About() {
                 </div>
 
                 {/* Connecting Line (Subtle) */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[1px] bg-[#083316]/5 -rotate-45 -z-0 hidden md:block"></div>
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[1px] bg-[#083316]/5 -rotate-45 -z-0 hidden lg:block"></div>
 
             </div>
         </section>
