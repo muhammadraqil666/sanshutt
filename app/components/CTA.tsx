@@ -7,9 +7,8 @@ export default function CTA() {
         <section className="w-full min-h-screen bg-[#FFFFFF] flex flex-col items-center justify-center text-center px-6">
 
             <div className="flex flex-col items-center gap-8 animate-fade-in-up">
-                {/* Reflective Text */}
                 <p className="text-xl md:text-2xl font-serif italic text-[#1a4a2e] max-w-xl leading-relaxed">
-                    "Some memories are meant to be kept in silence, waiting for the right eyes to find them."
+                    &ldquo;Some memories are meant to be kept in silence, waiting for the right eyes to find them.&rdquo;
                 </p>
 
                 {/* Minimal Button */}

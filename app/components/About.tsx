@@ -28,7 +28,7 @@ export default function About() {
                     <p className="text-xs font-bold tracking-[0.3em] text-[#083316]/30 uppercase mb-6">Archive 01</p>
 
                     <h2 className="text-2xl md:text-3xl font-serif text-[#1a4a2e] mb-6 leading-tight">
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                        &ldquo;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&rdquo;
                     </h2>
 
                     <p className="text-sm text-[#083316]/60 font-sans leading-relaxed mb-6">
