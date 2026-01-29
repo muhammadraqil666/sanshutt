@@ -4,18 +4,10 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Reveal from '../../components/Reveal';
-
-const weddings = [
-    {
-        slug: 'faiz-manda',
-        couple: 'Faiz & Manda',
-        date: '14 Desember 2025',
-        location: 'Cianjur', // Placeholder location
-        cover: '/gallery/wedding/faiz_manda.jpeg'
-    }
-];
+import { getGalleryItems } from '@/lib/data';
 
 export default function WeddingGallery() {
+    const weddings = getGalleryItems('wedding');
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
     return (
@@ -56,7 +48,7 @@ export default function WeddingGallery() {
                                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/2 transition-colors duration-500 z-10" />
                                 <Image
                                     src={wedding.cover}
-                                    alt={wedding.couple}
+                                    alt={wedding.title}
                                     width={800}
                                     height={1200}
                                     className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
@@ -70,7 +62,7 @@ export default function WeddingGallery() {
                             {/* Info */}
                             <div className="flex flex-col items-center text-center gap-2 mt-auto">
                                 <h3 className="text-3xl font-serif text-[#1a4a2e] italic tracking-wide group-hover:text-[#083316] transition-colors">
-                                    {wedding.couple}
+                                    {wedding.title}
                                 </h3>
                                 <div className="w-8 h-[1px] bg-[#083316]/20 my-1 group-hover:w-16 transition-all duration-500" />
                                 <p className="text-[10px] font-sans tracking-[0.2em] text-[#083316]/60 uppercase font-medium">

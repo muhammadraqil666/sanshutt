@@ -1,8 +1,14 @@
 'use client';
 
 import Image from 'next/image';
+import { AboutData } from '@/lib/data';
 
-export default function About() {
+interface AboutProps {
+    data: AboutData;
+}
+
+export default function About({ data }: AboutProps) {
+    const { archiveNumber, quote, description, established, images } = data;
     return (
         <section className="relative w-full min-h-screen bg-[#F4F9F6] flex items-center justify-center overflow-hidden">
 
@@ -13,7 +19,7 @@ export default function About() {
                     <div className="relative w-full h-full grayscale hover:grayscale-0 transition-all duration-700 shadow-lg bg-white p-2 pb-6 rounded-sm">
                         <div className="relative w-full h-full overflow-hidden">
                             <Image
-                                src="/about/about_1.jpg"
+                                src={images.image1}
                                 alt="Memory 1"
                                 fill
                                 className="object-cover"
@@ -25,18 +31,18 @@ export default function About() {
                 {/* Center Text */}
                 <div className="relative z-20 max-w-md text-center md:text-left lg:ml-80 py-12">
 
-                    <p className="text-xs font-bold tracking-[0.3em] text-[#083316]/30 uppercase mb-6">Archive 01</p>
+                    <p className="text-xs font-bold tracking-[0.3em] text-[#083316]/30 uppercase mb-6">{archiveNumber}</p>
 
                     <h2 className="text-2xl md:text-3xl font-serif text-[#1a4a2e] mb-6 leading-tight">
-                        &ldquo;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&rdquo;
+                        {quote}
                     </h2>
 
                     <p className="text-sm text-[#083316]/60 font-sans leading-relaxed mb-6">
-                        Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+                        {description}
                     </p>
 
                     <span className="inline-block border-b border-[#083316] text-xs font-bold uppercase tracking-widest pb-1">
-                        Est. MMXVII
+                        {established}
                     </span>
                 </div>
 
@@ -45,7 +51,7 @@ export default function About() {
                     <div className="relative w-full h-full grayscale hover:grayscale-0 transition-all duration-700 shadow-lg bg-white p-2 pb-6 rounded-sm">
                         <div className="relative w-full h-full overflow-hidden">
                             <Image
-                                src="/about/about_2.jpg"
+                                src={images.image2}
                                 alt="Memory 2"
                                 fill
                                 className="object-cover"

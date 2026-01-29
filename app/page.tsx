@@ -3,19 +3,20 @@ import About from './components/About'
 import CTA from './components/CTA'
 import Footer from './components/Footer'
 import Reveal from './components/Reveal'
+import { siteData } from '@/lib/data'
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col">
-      <Hero />
+      <Hero data={siteData.hero} />
       <Reveal className="w-full">
-        <About />
+        <About data={siteData.about} />
       </Reveal>
       <Reveal className="w-full">
-        <CTA />
+        <CTA data={siteData.cta} />
       </Reveal>
       <Reveal className="w-full">
-        <Footer />
+        <Footer data={siteData.footer} />
       </Reveal>
     </main>
   )

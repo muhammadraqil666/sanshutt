@@ -2,10 +2,13 @@
 
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
+import { usePathname } from 'next/navigation'
 
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false)
     const [isOpen, setIsOpen] = useState(false)
+    const pathname = usePathname()
+    const isKatalog = pathname === '/katalog'
 
     useEffect(() => {
         const handleScroll = () => {
@@ -37,7 +40,7 @@ export default function Navbar() {
 
                     {/* Desktop Links */}
                     <div className="hidden md:flex items-center gap-8">
-                        {['Home', 'Gallery', 'About Us'].map((item) => (
+                        {['Home', 'Gallery', 'Katalog'].map((item) => (
                             <Link
                                 key={item}
                                 href={item === 'Home' ? '/' : `/${item.toLowerCase().replace(' ', '-')}`}
@@ -64,11 +67,29 @@ export default function Navbar() {
                             )}
                         </button>
 
-                        {/* Action Button */}
-                        <button className="hidden md:block relative overflow-hidden group bg-[#EAF3ED] text-[#083316] px-6 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all hover:bg-white hover:shadow-lg hover:shadow-white/20">
-                            <span className="relative z-10">Let’s Go</span>
-                            <div className="absolute inset-0 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300 ease-out" />
-                        </button>
+                        {/* Action Button / Search Bar */}
+                        {isKatalog ? (
+                            <div className="hidden md:flex relative group">
+                                <input
+                                    type="text"
+                                    placeholder="Search team..."
+                                    className="bg-white/10 border border-white/20 rounded-full py-2 px-6 pr-10 text-xs text-white focus:outline-none focus:bg-white/20 transition-all w-48"
+                                    onChange={(e) => {
+                                        // This will be handled by the page's event listener or shared state if needed
+                                        // For now, we'll dispatch a custom event that Katalog page can listen to
+                                        window.dispatchEvent(new CustomEvent('nav-search', { detail: e.target.value }));
+                                    }}
+                                />
+                                <div className="absolute right-4 top-1/2 -translate-y-1/2 text-white/50">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                                </div>
+                            </div>
+                        ) : (
+                            <button className="hidden md:block relative overflow-hidden group bg-[#EAF3ED] text-[#083316] px-6 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all hover:bg-white hover:shadow-lg hover:shadow-white/20">
+                                <span className="relative z-10">Let’s Go</span>
+                                <div className="absolute inset-0 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300 ease-out" />
+                            </button>
+                        )}
                     </div>
                 </nav>
 
@@ -80,7 +101,7 @@ export default function Navbar() {
         transition-all duration-300 origin-top z-40
         ${isOpen ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 -translate-y-4 pointer-events-none'}
       `}>
-                    {['Home', 'Gallery', 'About Us'].map((item) => (
+                    {['Home', 'Gallery', 'Katalog'].map((item) => (
                         <Link
                             key={item}
                             href={item === 'Home' ? '/' : `/${item.toLowerCase().replace(' ', '-')}`}
@@ -90,9 +111,20 @@ export default function Navbar() {
                             {item}
                         </Link>
                     ))}
-                    <button className="mt-2 w-full bg-[#EAF3ED] text-[#083316] py-3 rounded-full text-xs font-bold uppercase tracking-wider">
-                        Let’s Go
-                    </button>
+                    {isKatalog ? (
+                        <input
+                            type="text"
+                            placeholder="Search team..."
+                            className="mt-2 w-full bg-white/10 border border-white/20 py-3 px-6 rounded-full text-xs text-white text-center focus:outline-none"
+                            onChange={(e) => {
+                                window.dispatchEvent(new CustomEvent('nav-search', { detail: e.target.value }));
+                            }}
+                        />
+                    ) : (
+                        <button className="mt-2 w-full bg-[#EAF3ED] text-[#083316] py-3 rounded-full text-xs font-bold uppercase tracking-wider">
+                            Let’s Go
+                        </button>
+                    )}
                 </div>
             </div>
         </div>

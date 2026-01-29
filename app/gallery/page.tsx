@@ -4,39 +4,10 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Reveal from '../components/Reveal';
-
-const categories = [
-  {
-    id: '01',
-    name: 'Wedding',
-    image: '/gallery/wedding.jpg',
-    link: '/gallery/wedding',
-    desc: 'Love in its purest form.'
-  },
-  {
-    id: '02',
-    name: 'Vacation',
-    image: '/gallery/vacation.jpg',
-    link: '/gallery/vacation',
-    desc: 'Escaping the ordinary.'
-  },
-  {
-    id: '03',
-    name: 'Event',
-    image: '/gallery/event.jpg',
-    link: '/gallery/event',
-    desc: 'Gatherings & celebrations.'
-  },
-  {
-    id: '04',
-    name: 'Moment',
-    image: '/gallery/moment.jpg',
-    link: '/gallery/moment',
-    desc: 'Fleeting seconds captured.'
-  }
-];
+import { getGalleryCategories } from '@/lib/data';
 
 export default function Gallery() {
+  const categories = getGalleryCategories();
   const [activeImage, setActiveImage] = useState(categories[0].image);
   const [activeIndex, setActiveIndex] = useState(0);
 

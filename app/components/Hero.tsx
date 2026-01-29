@@ -2,14 +2,14 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { HeroData } from '@/lib/data';
 
-const images = [
-    '/hero-1.png',
-    '/hero-2.png',
-    '/hero-3.png'
-];
+interface HeroProps {
+    data: HeroData;
+}
 
-export default function Hero() {
+export default function Hero({ data }: HeroProps) {
+    const { images, eyebrow, companionText, mainTitle } = data;
     const [currentImage, setCurrentImage] = useState(0);
 
     useEffect(() => {
@@ -51,7 +51,7 @@ export default function Hero() {
                 <div className="flex items-center gap-4 animate-fade-in-down mb-8 opacity-80">
                     <div className="w-8 h-[1px] bg-[#083316]/30"></div>
                     <p className="text-[10px] md:text-xs font-semibold tracking-[0.3em] text-[#083316] uppercase font-sans">
-                        together with our youth story
+                        {eyebrow}
                     </p>
                     <div className="w-8 h-[1px] bg-[#083316]/30"></div>
                 </div>
@@ -59,7 +59,7 @@ export default function Hero() {
                 {/* Companion Text */}
                 <div className="animate-fade-in-up z-20 relative translate-y-4" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
                     <span className="text-xl md:text-2xl font-serif italic text-[#1a4a2e] font-medium tracking-wide">
-                        this is
+                        {companionText}
                     </span>
                 </div>
 
@@ -75,7 +75,7 @@ export default function Hero() {
                                 className="font-sans font-black text-[13vw] md:text-[96px] uppercase tracking-tighter"
                                 style={{ fontFamily: 'var(--font-inter)' }}
                             >
-                                SANSHUT
+                                {mainTitle}
                             </textPath>
                         </text>
                     </svg>
