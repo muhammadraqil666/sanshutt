@@ -55,39 +55,52 @@ export default function Katalog() {
                     {/* 2. LAYER TENGAH: Foto Personil (Individual Fine-Tuning) */}
                     <div className="absolute inset-x-0 top-0 bottom-[25vh] md:bottom-[18vh] z-30 flex items-center justify-center pointer-events-none px-4 md:px-6">
                         <div key={`img-${currentMember.name}`} className="relative w-full h-full max-w-4xl flex items-center justify-center animate-img-fade-in">
-                            <div className={`relative w-full h-[60vh] md:h-[90vh] transition-all duration-700 ease-out transform ${currentMember.name === 'Aking'
-                                ? 'scale-[1.1] md:scale-[1.38] -translate-y-[5vh] md:-translate-y-[18vh]'
-                                : currentMember.name === 'Iqbal'
-                                    ? 'scale-110 md:scale-[1.28] -translate-y-[1vh] md:-translate-y-[3vh]'
-                                    : currentMember.name === 'Ulul'
-                                        ? 'scale-[0.45] md:scale-[0.6] translate-y-[5vh] md:translate-y-[16vh]'
-                                        : currentMember.name === 'Sultan'
-                                            ? 'scale-[0.55] md:scale-[0.7] translate-y-[3vh] md:translate-y-[12vh]'
-                                            : currentMember.name === 'Fikri'
-                                                ? 'scale-[0.6] md:scale-[0.75] translate-y-[3vh] md:translate-y-[12vh]'
-                                                : currentMember.name === 'Fahmi'
-                                                    ? 'scale-[0.7] md:scale-[0.85] translate-y-[3vh] md:translate-y-[12vh]'
-                                                    : currentMember.name === 'Lutfi'
-                                                        ? 'scale-90 md:scale-105 -translate-x-2 md:-translate-x-8 translate-y-0'
-                                                        : 'scale-95 md:scale-105 translate-y-0'
+                            <div className={`relative w-full h-[60vh] md:h-[90vh] transition-all duration-700 ease-out transform ${currentMember.name === 'Akuy'
+                                ? 'scale-[0.8] md:scale-[0.85] translate-y-[4vh] md:translate-y-[8vh]'
+                                : currentMember.name === 'Aking'
+                                    ? 'scale-[1.1] md:scale-[1.38] -translate-y-[5vh] md:-translate-y-[18vh]'
+                                    : currentMember.name === 'Iqbal'
+                                        ? 'scale-110 md:scale-[1.28] -translate-y-[1vh] md:-translate-y-[3vh]'
+                                        : currentMember.name === 'Ulul'
+                                            ? 'scale-[0.7] md:scale-[0.85] translate-y-[5vh] md:translate-y-[12vh]'
+                                            : currentMember.name === 'Sultan'
+                                                ? 'scale-[0.5] md:scale-[0.6] translate-y-[6vh] md:translate-y-[12vh]'
+                                                : currentMember.name === 'Faiz'
+                                                    ? 'scale-[0.75] md:scale-[0.8] translate-y-[5vh] md:translate-y-[10vh]'
+                                                    : currentMember.name === 'Fikri'
+                                                        ? 'scale-[0.55] md:scale-[0.7] translate-y-[6vh] md:translate-y-[12vh]'
+                                                        : currentMember.name === 'Fahmi'
+                                                            ? 'scale-[0.65] md:scale-[0.75] translate-y-[6vh] md:translate-y-[12vh]'
+                                                            : currentMember.name === 'Lutfi'
+                                                                ? 'scale-90 md:scale-100 -translate-x-2 md:-translate-x-8 translate-y-[2vh]'
+                                                                : currentMember.name === 'Adam'
+                                                                    ? 'scale-[0.8] md:scale-[0.85] translate-y-[4vh] md:translate-y-[8vh]'
+                                                                    : 'scale-90 md:scale-95 translate-y-[2vh]'
                                 }`}>
-                                <Image
-                                    src={currentMember.image}
-                                    alt={currentMember.name}
-                                    fill
-                                    className="object-contain object-center"
-                                    style={{
-                                        filter: 'drop-shadow(0px 30px 50px rgba(0,0,0,0.08))',
-                                    }}
-                                    priority
-                                />
+                                {currentMember.image ? (
+                                    <Image
+                                        src={currentMember.image}
+                                        alt={currentMember.name}
+                                        fill
+                                        className="object-contain object-center"
+                                        style={{
+                                            filter: 'drop-shadow(0px 30px 50px rgba(0,0,0,0.08))',
+                                        }}
+                                        priority
+                                    />
+                                ) : (
+                                    <div className="flex flex-col items-center justify-center h-full text-[#1a4a2e]/10">
+                                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="mb-4"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                                        <p className="font-serif italic text-sm tracking-widest opacity-40 uppercase">Photo coming soon</p>
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </div>
 
                     {/* Preload adjacent images for ultra-fast switching */}
                     <div className="hidden">
-                        {filteredMembers[(currentIndex + 1) % filteredMembers.length] && (
+                        {filteredMembers[(currentIndex + 1) % filteredMembers.length]?.image && (
                             <Image
                                 src={filteredMembers[(currentIndex + 1) % filteredMembers.length].image}
                                 alt="preload"
@@ -96,7 +109,7 @@ export default function Katalog() {
                                 priority
                             />
                         )}
-                        {filteredMembers[(currentIndex - 1 + filteredMembers.length) % filteredMembers.length] && (
+                        {filteredMembers[(currentIndex - 1 + filteredMembers.length) % filteredMembers.length]?.image && (
                             <Image
                                 src={filteredMembers[(currentIndex - 1 + filteredMembers.length) % filteredMembers.length].image}
                                 alt="preload"

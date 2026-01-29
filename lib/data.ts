@@ -149,107 +149,107 @@ export const siteData: SiteData = {
             {
                 name: 'Akuy',
                 role: 'The Visual Alchemist',
-                image: '/katalog/a_akuy.png'
+                image: '/katalog-v1/a-akuy.png'
             },
             {
                 name: 'Aking',
                 role: 'The Archive Custodian',
-                image: '/katalog/a_aking.png'
+                image: ''
             },
             {
                 name: 'Iqbal',
                 role: 'The Light Gatherer',
-                image: '/katalog/a_iqbal.png'
+                image: ''
             },
             {
                 name: 'Ulul',
                 role: 'The Architect of Light',
-                image: '/katalog/a_ulul1.png'
+                image: '/katalog-v1/a-ulul.png'
             },
             {
                 name: 'Sultan',
                 role: 'The Visual Voyager',
-                image: '/katalog/a_sultan.png'
+                image: ''
             },
             {
                 name: 'Ozan',
                 role: 'The Light Weaver',
-                image: '/katalog/a_ozan.png'
+                image: ''
             },
             {
                 name: 'Faiz',
                 role: 'The Moment Seizer',
-                image: '/katalog/a_faiz.png'
+                image: '/katalog-v1/a-faiz.png'
             },
             {
                 name: 'Fikri',
                 role: 'The Visual Weaver',
-                image: '/katalog/a_fikri1.png'
+                image: ''
             },
             {
                 name: 'Fahmi',
                 role: 'The Light Sculptor',
-                image: '/katalog/a_fahmi.png'
+                image: '/katalog-v1/a-fahmi.png'
             },
             {
                 name: 'Lutfi',
                 role: 'The Motion Maestro',
-                image: '/katalog/a_lutfi.png'
+                image: ''
             },
             {
                 name: 'Aldi',
                 role: 'The Visual Storyteller',
-                image: '/katalog/a_aldi.png'
+                image: ''
             },
             {
                 name: 'Adam',
                 role: 'The Visual Storyteller',
-                image: '/katalog/a_adam.png'
+                image: '/katalog-v1/a-adam.png'
             },
             {
                 name: 'Alief',
                 role: 'The Visual Storyteller',
-                image: '/katalog/a_alief.png'
+                image: ''
             },
             {
                 name: 'Arif',
                 role: 'The Visual Storyteller',
-                image: '/katalog/a_arif.png'
+                image: ''
             },
             {
                 name: 'Idin',
                 role: 'The Visual Storyteller',
-                image: '/katalog/a_idin.png'
+                image: ''
             },
             {
                 name: 'Ikal',
                 role: 'The Visual Storyteller',
-                image: '/katalog/a_ikal.png'
+                image: ''
             },
             {
                 name: 'Showi',
                 role: 'The Visual Storyteller',
-                image: '/katalog/a_showi.png'
+                image: ''
             },
             {
-                name: 'Aik',
+                name: 'Nanda',
                 role: 'The Visual Storyteller',
-                image: '/katalog/a_aik.png'
+                image: ''
             },
             {
                 name: 'Rey',
                 role: 'The Visual Storyteller',
-                image: '/katalog/a_rey.png'
+                image: ''
             },
             {
                 name: 'Dino',
                 role: 'The Visual Storyteller',
-                image: '/katalog/a_dino.png'
+                image: ''
             },
             {
                 name: 'Aldiyo',
                 role: 'The Visual Storyteller',
-                image: '/katalog/a_aldiyo.png'
+                image: ''
             }
         ]
     },
