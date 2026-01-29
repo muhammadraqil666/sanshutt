@@ -57,22 +57,22 @@ export default function Hero({ data }: HeroProps) {
                 </div>
 
                 {/* Companion Text */}
-                <div className="animate-fade-in-up z-20 relative translate-y-4" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
-                    <span className="text-xl md:text-2xl font-serif italic text-[#1a4a2e] font-medium tracking-wide">
+                <div className="animate-fade-in-up z-20 relative translate-y-4 px-6" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
+                    <span className="text-lg md:text-2xl font-serif italic text-[#1a4a2e] font-medium tracking-wide">
                         {companionText}
                     </span>
                 </div>
 
                 {/* Main Title - Curved Text (SVG) */}
-                <div className="relative w-full max-w-4xl h-20 md:h-44 animate-fade-in-up flex items-center justify-center -mt-2 md:-mt-4" style={{ animationDelay: '0.4s', animationFillMode: 'both' }}>
-                    <svg viewBox="0 0 500 120" className="w-full h-full overflow-visible drop-shadow-2xl">
+                <div className="relative w-full max-w-4xl h-24 md:h-44 animate-fade-in-up flex items-center justify-center -mt-2 md:-mt-4" style={{ animationDelay: '0.4s', animationFillMode: 'both' }}>
+                    <svg viewBox="0 0 500 120" className="w-[110%] md:w-full h-full overflow-visible drop-shadow-2xl">
                         {/* Stronger, more intentional curve */}
                         <path id="curve" d="M 40,110 Q 250,75 460,110" fill="transparent" />
                         <text className="fill-[#083316]" textAnchor="middle">
                             <textPath
                                 href="#curve"
                                 startOffset="50%"
-                                className="font-sans font-black text-[13vw] md:text-[96px] uppercase tracking-tighter"
+                                className="font-sans font-black text-[15vw] md:text-[96px] uppercase tracking-tighter"
                                 style={{ fontFamily: 'var(--font-inter)' }}
                             >
                                 {mainTitle}

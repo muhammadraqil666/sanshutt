@@ -93,36 +93,45 @@ export default function Navbar() {
 
                 {/* Mobile Menu Overlay */}
                 <div className={`
-        absolute top-full left-0 right-0 mt-4 mx-auto w-[90%] max-w-[300px]
-        bg-[#083316]/95 backdrop-blur-xl rounded-2xl border border-white/5 
-        flex flex-col items-center gap-4 py-6 px-4
-        transition-all duration-300 origin-top z-40
-        ${isOpen ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 -translate-y-4 pointer-events-none'}
+        absolute top-full left-0 right-0 mt-6 mx-auto w-[92%] max-w-[320px]
+        bg-[#083316]/95 backdrop-blur-2xl rounded-[2rem] border border-white/10 
+        flex flex-col items-center gap-2 py-8 px-6
+        transition-all duration-500 cubic-bezier(0.16, 1, 0.3, 1) z-40
+        shadow-[0_20px_50px_rgba(0,0,0,0.3)]
+        ${isOpen ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 -translate-y-8 pointer-events-none'}
       `}>
-                    {['Home', 'Gallery', 'Katalog'].map((item) => (
+                    {['Home', 'Gallery', 'Katalog'].map((item, idx) => (
                         <Link
                             key={item}
                             href={item === 'Home' ? '/' : `/${item.toLowerCase().replace(' ', '-')}`}
-                            className="text-white/80 hover:text-white text-sm font-medium uppercase tracking-widest transition-colors w-full text-center py-2 border-b border-white/5 last:border-0"
+                            className={`text-white/70 hover:text-white text-[13px] font-semibold uppercase tracking-[0.2em] w-full text-center py-4 transition-all duration-300 ${idx !== 2 ? 'border-b border-white/5' : ''}`}
                             onClick={() => setIsOpen(false)}
                         >
                             {item}
                         </Link>
                     ))}
-                    {isKatalog ? (
-                        <input
-                            type="text"
-                            placeholder="Search team..."
-                            className="mt-2 w-full bg-white/10 border border-white/20 py-3 px-6 rounded-full text-xs text-white text-center focus:outline-none"
-                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                                window.dispatchEvent(new CustomEvent('nav-search', { detail: e.target.value }));
-                            }}
-                        />
-                    ) : (
-                        <button className="mt-2 w-full bg-[#EAF3ED] text-[#083316] py-3 rounded-full text-xs font-bold uppercase tracking-wider">
-                            Let’s Go
-                        </button>
-                    )}
+
+                    <div className="w-full mt-4 pt-4 border-t border-white/10">
+                        {isKatalog ? (
+                            <div className="relative">
+                                <input
+                                    type="text"
+                                    placeholder="Search team..."
+                                    className="w-full bg-white/5 border border-white/10 py-3.5 px-6 rounded-full text-xs text-white text-center focus:outline-none focus:bg-white/10 focus:border-white/20 transition-all placeholder:text-white/20"
+                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                                        window.dispatchEvent(new CustomEvent('nav-search', { detail: e.target.value }));
+                                    }}
+                                />
+                                <div className="absolute right-6 top-1/2 -translate-y-1/2 text-white/20">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                                </div>
+                            </div>
+                        ) : (
+                            <button className="w-full bg-[#EAF3ED] text-[#083316] py-4 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-xl active:scale-95 transition-transform">
+                                Let’s Go
+                            </button>
+                        )}
+                    </div>
                 </div>
             </div>
         </div>

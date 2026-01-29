@@ -45,31 +45,31 @@ export default function Katalog() {
             {filteredMembers.length > 0 ? (
                 <>
                     {/* 1. LAYER PALING BELAKANG: Nama Watermark Raksasa */}
-                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden">
                         <h1 key={`bg-text-${currentMember.name}`}
-                            className="text-[30vw] font-serif italic text-[#1a4a2e] opacity-[0.02] leading-none select-none tracking-tighter whitespace-nowrap transition-all duration-1000">
+                            className="text-[40vw] md:text-[30vw] font-serif italic text-[#1a4a2e] opacity-[0.03] leading-none select-none tracking-tighter whitespace-nowrap transition-all duration-1000 rotate-[-10deg] md:rotate-0">
                             {currentMember.name}
                         </h1>
                     </div>
 
                     {/* 2. LAYER TENGAH: Foto Personil (Individual Fine-Tuning) */}
-                    <div className="absolute inset-x-0 top-0 bottom-[18vh] z-30 flex items-center justify-center pointer-events-none px-6">
+                    <div className="absolute inset-x-0 top-0 bottom-[25vh] md:bottom-[18vh] z-30 flex items-center justify-center pointer-events-none px-4 md:px-6">
                         <div key={`img-${currentMember.name}`} className="relative w-full h-full max-w-4xl flex items-center justify-center animate-img-fade-in">
-                            <div className={`relative w-full h-[75vh] md:h-[90vh] transition-all duration-700 ease-out transform ${currentMember.name === 'Aking'
-                                ? 'scale-125 md:scale-[1.38] -translate-y-[15vh] md:-translate-y-[18vh]'
+                            <div className={`relative w-full h-[60vh] md:h-[90vh] transition-all duration-700 ease-out transform ${currentMember.name === 'Aking'
+                                ? 'scale-[1.1] md:scale-[1.38] -translate-y-[5vh] md:-translate-y-[18vh]'
                                 : currentMember.name === 'Iqbal'
-                                    ? 'scale-115 md:scale-[1.28] -translate-y-[2vh] md:-translate-y-[3vh]'
+                                    ? 'scale-110 md:scale-[1.28] -translate-y-[1vh] md:-translate-y-[3vh]'
                                     : currentMember.name === 'Ulul'
-                                        ? 'scale-[0.5] md:scale-[0.6] translate-y-[12vh] md:translate-y-[16vh]'
+                                        ? 'scale-[0.45] md:scale-[0.6] translate-y-[5vh] md:translate-y-[16vh]'
                                         : currentMember.name === 'Sultan'
-                                            ? 'scale-[0.6] md:scale-[0.7] translate-y-[8vh] md:translate-y-[12vh]'
+                                            ? 'scale-[0.55] md:scale-[0.7] translate-y-[3vh] md:translate-y-[12vh]'
                                             : currentMember.name === 'Fikri'
-                                                ? 'scale-[0.65] md:scale-[0.75] translate-y-[8vh] md:translate-y-[12vh]'
+                                                ? 'scale-[0.6] md:scale-[0.75] translate-y-[3vh] md:translate-y-[12vh]'
                                                 : currentMember.name === 'Fahmi'
-                                                    ? 'scale-[0.75] md:scale-[0.85] translate-y-[8vh] md:translate-y-[12vh]'
+                                                    ? 'scale-[0.7] md:scale-[0.85] translate-y-[3vh] md:translate-y-[12vh]'
                                                     : currentMember.name === 'Lutfi'
-                                                        ? 'scale-100 md:scale-105 -translate-x-4 md:-translate-x-8 translate-y-0'
-                                                        : 'scale-100 md:scale-105 translate-y-0'
+                                                        ? 'scale-90 md:scale-105 -translate-x-2 md:-translate-x-8 translate-y-0'
+                                                        : 'scale-95 md:scale-105 translate-y-0'
                                 }`}>
                                 <Image
                                     src={currentMember.image}
@@ -111,20 +111,20 @@ export default function Katalog() {
                     <div className="absolute inset-x-0 bottom-0 z-40 flex flex-col items-center pointer-events-none">
                         <div className="w-full h-[45vh] bg-gradient-to-t from-[#F4F9F6] via-[#F4F9F6]/90 to-transparent absolute bottom-0 -z-10"></div>
 
-                        <div className="pb-16 md:pb-24 flex flex-col items-center pointer-events-auto">
-                            <div className="w-10 h-[1px] bg-[#1a4a2e]/10 mb-8"></div>
-                            <div className="text-center relative">
+                        <div className="pb-12 md:pb-24 flex flex-col items-center pointer-events-auto">
+                            <div className="w-8 md:w-10 h-[1px] bg-[#1a4a2e]/10 mb-6 md:mb-8"></div>
+                            <div className="text-center relative px-4">
                                 <div className="absolute inset-0 bg-[#F4F9F6]/20 blur-2xl -z-10"></div>
                                 <h2 key={`name-fg-${currentMember.name}`}
-                                    className="text-7xl md:text-8xl lg:text-[10rem] font-serif italic text-[#1a4a2e] leading-none mb-6">
+                                    className="text-5xl md:text-8xl lg:text-[10rem] font-serif italic text-[#1a4a2e] leading-none mb-4 md:mb-6 tracking-tight">
                                     {currentMember.name}
                                 </h2>
-                                <div className="inline-flex items-center gap-4 px-8 py-2.5 border border-[#1a4a2e]/10 rounded-full bg-white/50 backdrop-blur-md shadow-sm">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-[#1a4a2e]/20"></span>
-                                    <p className="text-[10px] md:text-[13px] font-sans text-[#083316]/50 tracking-[0.6em] uppercase font-bold">
+                                <div className="inline-flex items-center gap-3 md:gap-4 px-5 md:px-8 py-2 md:py-2.5 border border-[#1a4a2e]/10 rounded-full bg-white/50 backdrop-blur-md shadow-sm">
+                                    <span className="w-1 md:w-1.5 h-1 md:h-1.5 rounded-full bg-[#1a4a2e]/20"></span>
+                                    <p className="text-[9px] md:text-[13px] font-sans text-[#083316]/50 tracking-[0.4em] md:tracking-[0.6em] uppercase font-bold">
                                         {currentMember.role}
                                     </p>
-                                    <span className="w-1.5 h-1.5 rounded-full bg-[#1a4a2e]/20"></span>
+                                    <span className="w-1 md:w-1.5 h-1 md:h-1.5 rounded-full bg-[#1a4a2e]/20"></span>
                                 </div>
                             </div>
                         </div>
@@ -132,18 +132,18 @@ export default function Katalog() {
 
                     {/* 4. NAVIGASI */}
                     {filteredMembers.length > 1 && (
-                        <div className="absolute inset-x-4 md:inset-x-10 top-1/2 -translate-y-1/2 z-50 flex justify-between pointer-events-none">
+                        <div className="absolute inset-x-4 md:inset-x-10 bottom-[15vh] md:top-1/2 md:-translate-y-1/2 z-50 flex justify-between md:block pointer-events-none">
                             <button
                                 onClick={prevMember}
-                                className="w-14 h-14 md:w-20 md:h-20 rounded-full border border-[#1a4a2e]/10 flex items-center justify-center text-[#1a4a2e]/20 hover:text-[#1a4a2e] hover:bg-white transition-all duration-300 pointer-events-auto bg-white/10 backdrop-blur-sm group"
+                                className="w-12 h-12 md:w-20 md:h-20 md:absolute md:left-0 rounded-full border border-[#1a4a2e]/10 flex items-center justify-center text-[#1a4a2e]/20 hover:text-[#1a4a2e] hover:bg-white transition-all duration-300 pointer-events-auto bg-white/30 md:bg-white/10 backdrop-blur-sm group"
                             >
-                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
                             </button>
                             <button
                                 onClick={nextMember}
-                                className="w-14 h-14 md:w-20 md:h-20 rounded-full border border-[#1a4a2e]/10 flex items-center justify-center text-[#1a4a2e]/20 hover:text-[#1a4a2e] hover:bg-white transition-all duration-300 pointer-events-auto bg-white/10 backdrop-blur-sm group"
+                                className="w-12 h-12 md:w-20 md:h-20 md:absolute md:right-0 rounded-full border border-[#1a4a2e]/10 flex items-center justify-center text-[#1a4a2e]/20 hover:text-[#1a4a2e] hover:bg-white transition-all duration-300 pointer-events-auto bg-white/30 md:bg-white/10 backdrop-blur-sm group"
                             >
-                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
                             </button>
                         </div>
                     )}
