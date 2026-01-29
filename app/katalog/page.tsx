@@ -8,6 +8,8 @@ export default function Katalog() {
     const { teamMembers } = siteData.katalog;
     const [currentIndex, setCurrentIndex] = useState(0);
     const [searchQuery, setSearchQuery] = useState('');
+    const [direction, setDirection] = useState<'next' | 'prev' | null>(null);
+    const [isAnimating, setIsAnimating] = useState(false);
 
     // Filter members based on search query
     const filteredMembers = useMemo(() => {
@@ -28,14 +30,40 @@ export default function Katalog() {
     }, []);
 
     const nextMember = () => {
-        if (filteredMembers.length === 0) return;
+        if (filteredMembers.length === 0 || isAnimating) return;
+        setDirection('next');
+        setIsAnimating(true);
         setCurrentIndex((prev) => (prev + 1) % filteredMembers.length);
+        setTimeout(() => setIsAnimating(false), 800);
     };
 
     const prevMember = () => {
-        if (filteredMembers.length === 0) return;
+        if (filteredMembers.length === 0 || isAnimating) return;
+        setDirection('prev');
+        setIsAnimating(true);
         setCurrentIndex((prev) => (prev - 1 + filteredMembers.length) % filteredMembers.length);
+        setTimeout(() => setIsAnimating(false), 800);
     };
+
+    // Scroll handler
+    useEffect(() => {
+        let lastScrollTime = 0;
+        const scrollThrottle = 1000; // ms
+
+        const handleWheel = (e: WheelEvent) => {
+            const now = Date.now();
+            if (now - lastScrollTime < scrollThrottle) return;
+
+            if (Math.abs(e.deltaY) > 30) {
+                if (e.deltaY > 0) nextMember();
+                else prevMember();
+                lastScrollTime = now;
+            }
+        };
+
+        window.addEventListener('wheel', handleWheel);
+        return () => window.removeEventListener('wheel', handleWheel);
+    }, [filteredMembers, isAnimating]);
 
     const currentMember = filteredMembers[currentIndex];
 
@@ -47,14 +75,14 @@ export default function Katalog() {
                     {/* 1. LAYER PALING BELAKANG: Nama Watermark Raksasa */}
                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden">
                         <h1 key={`bg-text-${currentMember.name}`}
-                            className="text-[40vw] md:text-[30vw] font-serif italic text-[#1a4a2e] opacity-[0.03] leading-none select-none tracking-tighter whitespace-nowrap transition-all duration-1000 rotate-[-10deg] md:rotate-0">
+                            className={`text-[40vw] md:text-[30vw] font-serif italic text-[#1a4a2e] opacity-[0.03] leading-none select-none tracking-tighter whitespace-nowrap transition-all duration-1000 rotate-[-10deg] md:rotate-0 ${direction === 'next' ? 'animate-slide-left' : direction === 'prev' ? 'animate-slide-right' : ''}`}>
                             {currentMember.name}
                         </h1>
                     </div>
 
                     {/* 2. LAYER TENGAH: Foto Personil (Individual Fine-Tuning) */}
                     <div className="absolute inset-x-0 top-0 bottom-[25vh] md:bottom-[18vh] z-30 flex items-center justify-center pointer-events-none px-4 md:px-6">
-                        <div key={`img-${currentMember.name}`} className="relative w-full h-full max-w-4xl flex items-center justify-center animate-img-fade-in">
+                        <div key={`img-${currentMember.name}`} className={`relative w-full h-full max-w-4xl flex items-center justify-center ${direction === 'next' ? 'animate-img-next' : direction === 'prev' ? 'animate-img-prev' : 'animate-img-fade-in'}`}>
                             <div className={`relative w-full h-[60vh] md:h-[90vh] transition-all duration-700 ease-out transform ${currentMember.name === 'Akuy'
                                 ? 'scale-[0.8] md:scale-[0.85] translate-y-[4vh] md:translate-y-[8vh]'
                                 : currentMember.name === 'Aking'
@@ -71,7 +99,7 @@ export default function Katalog() {
                                                         ? 'scale-[0.55] md:scale-[0.7] translate-y-[6vh] md:translate-y-[12vh]'
                                                         : currentMember.name === 'Fahmi'
                                                             ? 'scale-[0.65] md:scale-[0.75] translate-y-[6vh] md:translate-y-[12vh]'
-                                                            : currentMember.name === 'Lutfi'
+                                                            : currentMember.name === 'Dablu'
                                                                 ? 'scale-90 md:scale-100 -translate-x-2 md:-translate-x-8 translate-y-[2vh]'
                                                                 : currentMember.name === 'Adam'
                                                                     ? 'scale-[0.8] md:scale-[0.85] translate-y-[4vh] md:translate-y-[8vh]'
@@ -129,7 +157,7 @@ export default function Katalog() {
                             <div className="text-center relative px-4">
                                 <div className="absolute inset-0 bg-[#F4F9F6]/20 blur-2xl -z-10"></div>
                                 <h2 key={`name-fg-${currentMember.name}`}
-                                    className="text-5xl md:text-8xl lg:text-[10rem] font-serif italic text-[#1a4a2e] leading-none mb-4 md:mb-6 tracking-tight">
+                                    className={`text-5xl md:text-8xl lg:text-[10rem] font-serif italic text-[#1a4a2e] leading-none mb-4 md:mb-6 tracking-tight ${direction === 'next' ? 'animate-text-next' : direction === 'prev' ? 'animate-text-prev' : 'animate-fade-in'}`}>
                                     {currentMember.name}
                                 </h2>
                                 <div className="inline-flex items-center gap-3 md:gap-4 px-5 md:px-8 py-2 md:py-2.5 border border-[#1a4a2e]/10 rounded-full bg-white/50 backdrop-blur-md shadow-sm">
@@ -167,7 +195,11 @@ export default function Katalog() {
                             {filteredMembers.map((_, idx) => (
                                 <button
                                     key={idx}
-                                    onClick={() => setCurrentIndex(idx)}
+                                    onClick={() => {
+                                        if (idx === currentIndex) return;
+                                        setDirection(idx > currentIndex ? 'next' : 'prev');
+                                        setCurrentIndex(idx);
+                                    }}
                                     className={`h-[2px] rounded-full transition-all duration-700 pointer-events-auto ${idx === currentIndex ? 'w-10 bg-[#1a4a2e]/40' : 'w-2 bg-[#1a4a2e]/10'}`}
                                 ></button>
                             ))}
@@ -205,11 +237,53 @@ export default function Katalog() {
                     from { opacity: 0; transform: scale(0.98) translateY(10px); }
                     to { opacity: 1; transform: scale(1) translateY(0); }
                 }
+                @keyframes img-next {
+                    0% { opacity: 0; transform: translateX(50px) scale(0.95) rotateY(10deg); filter: blur(10px); }
+                    100% { opacity: 1; transform: translateX(0) scale(1) rotateY(0deg); filter: blur(0); }
+                }
+                @keyframes img-prev {
+                    0% { opacity: 0; transform: translateX(-50px) scale(0.95) rotateY(-10deg); filter: blur(10px); }
+                    100% { opacity: 1; transform: translateX(0) scale(1) rotateY(0deg); filter: blur(0); }
+                }
+                @keyframes text-next {
+                    0% { opacity: 0; transform: translateX(30px) skewX(-10deg); filter: blur(5px); }
+                    100% { opacity: 1; transform: translateX(0) skewX(0); filter: blur(0); }
+                }
+                @keyframes text-prev {
+                    0% { opacity: 0; transform: translateX(-30px) skewX(10deg); filter: blur(5px); }
+                    100% { opacity: 1; transform: translateX(0) skewX(0); filter: blur(0); }
+                }
+                @keyframes slide-left {
+                    0% { opacity: 0; transform: translateX(100px); }
+                    100% { opacity: 0.03; transform: translateX(0); }
+                }
+                @keyframes slide-right {
+                    0% { opacity: 0; transform: translateX(-100px); }
+                    100% { opacity: 0.03; transform: translateX(0); }
+                }
                 .animate-fade-in {
                     animation: fade-in 0.8s ease-out forwards;
                 }
                 .animate-img-fade-in {
-                    animation: img-fade-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+                    animation: img-fade-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+                }
+                .animate-img-next {
+                    animation: img-next 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+                }
+                .animate-img-prev {
+                    animation: img-prev 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+                }
+                .animate-text-next {
+                    animation: text-next 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+                }
+                .animate-text-prev {
+                    animation: text-prev 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+                }
+                .animate-slide-left {
+                    animation: slide-left 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+                }
+                .animate-slide-right {
+                    animation: slide-right 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
                 }
             `}</style>
         </main>

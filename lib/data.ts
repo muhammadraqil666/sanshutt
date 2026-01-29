@@ -147,9 +147,9 @@ export const siteData: SiteData = {
     katalog: {
         teamMembers: [
             {
-                name: 'Akuy',
-                role: 'The Visual Alchemist',
-                image: '/katalog-v1/a-akuy.png'
+                name: 'Adam',
+                role: 'The Visual Storyteller',
+                image: '/katalog-v1/a-adam.png'
             },
             {
                 name: 'Aking',
@@ -157,44 +157,9 @@ export const siteData: SiteData = {
                 image: ''
             },
             {
-                name: 'Iqbal',
-                role: 'The Light Gatherer',
-                image: ''
-            },
-            {
-                name: 'Ulul',
-                role: 'The Architect of Light',
-                image: '/katalog-v1/a-ulul.png'
-            },
-            {
-                name: 'Sultan',
-                role: 'The Visual Voyager',
-                image: ''
-            },
-            {
-                name: 'Ozan',
-                role: 'The Light Weaver',
-                image: ''
-            },
-            {
-                name: 'Faiz',
-                role: 'The Moment Seizer',
-                image: '/katalog-v1/a-faiz.png'
-            },
-            {
-                name: 'Fikri',
-                role: 'The Visual Weaver',
-                image: ''
-            },
-            {
-                name: 'Fahmi',
-                role: 'The Light Sculptor',
-                image: '/katalog-v1/a-fahmi.png'
-            },
-            {
-                name: 'Lutfi',
-                role: 'The Motion Maestro',
-                image: ''
+                name: 'Akuy',
+                role: 'The Visual Alchemist',
+                image: '/katalog-v1/a-akuy.png'
             },
             {
                 name: 'Aldi',
@@ -202,9 +167,9 @@ export const siteData: SiteData = {
                 image: ''
             },
             {
-                name: 'Adam',
+                name: 'Aldiyo',
                 role: 'The Visual Storyteller',
-                image: '/katalog-v1/a-adam.png'
+                image: ''
             },
             {
                 name: 'Alief',
@@ -214,6 +179,31 @@ export const siteData: SiteData = {
             {
                 name: 'Arif',
                 role: 'The Visual Storyteller',
+                image: ''
+            },
+            {
+                name: 'Dablu',
+                role: 'The Motion Maestro',
+                image: ''
+            },
+            {
+                name: 'Dino',
+                role: 'The Visual Storyteller',
+                image: ''
+            },
+            {
+                name: 'Fahmi',
+                role: 'The Light Sculptor',
+                image: '/katalog-v1/a-fahmi.png'
+            },
+            {
+                name: 'Faiz',
+                role: 'The Moment Seizer',
+                image: '/katalog-v1/a-faiz.png'
+            },
+            {
+                name: 'Fikri',
+                role: 'The Visual Weaver',
                 image: ''
             },
             {
@@ -227,13 +217,13 @@ export const siteData: SiteData = {
                 image: ''
             },
             {
-                name: 'Showi',
-                role: 'The Visual Storyteller',
+                name: 'Iqbal',
+                role: 'The Light Gatherer',
                 image: ''
             },
             {
-                name: 'Nanda',
-                role: 'The Visual Storyteller',
+                name: 'Ozan',
+                role: 'The Light Weaver',
                 image: ''
             },
             {
@@ -242,14 +232,19 @@ export const siteData: SiteData = {
                 image: ''
             },
             {
-                name: 'Dino',
+                name: 'Showi',
                 role: 'The Visual Storyteller',
                 image: ''
             },
             {
-                name: 'Aldiyo',
-                role: 'The Visual Storyteller',
+                name: 'Sultan',
+                role: 'The Visual Voyager',
                 image: ''
+            },
+            {
+                name: 'Ulul',
+                role: 'The Architect of Light',
+                image: '/katalog-v1/a-ulul.png'
             }
         ]
     },
