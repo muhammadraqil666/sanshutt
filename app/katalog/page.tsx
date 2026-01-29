@@ -54,7 +54,7 @@ export default function Katalog() {
 
                     {/* 2. LAYER TENGAH: Foto Personil (Individual Fine-Tuning) */}
                     <div className="absolute inset-x-0 top-0 bottom-[18vh] z-30 flex items-center justify-center pointer-events-none px-6">
-                        <div key={`img-${currentMember.name}`} className="relative w-full h-full max-w-4xl flex items-center justify-center">
+                        <div key={`img-${currentMember.name}`} className="relative w-full h-full max-w-4xl flex items-center justify-center animate-img-fade-in">
                             <div className={`relative w-full h-[75vh] md:h-[90vh] transition-all duration-700 ease-out transform ${currentMember.name === 'Aking'
                                 ? 'scale-125 md:scale-[1.38] -translate-y-[15vh] md:-translate-y-[18vh]'
                                 : currentMember.name === 'Iqbal'
@@ -83,6 +83,28 @@ export default function Katalog() {
                                 />
                             </div>
                         </div>
+                    </div>
+
+                    {/* Preload adjacent images for ultra-fast switching */}
+                    <div className="hidden">
+                        {filteredMembers[(currentIndex + 1) % filteredMembers.length] && (
+                            <Image
+                                src={filteredMembers[(currentIndex + 1) % filteredMembers.length].image}
+                                alt="preload"
+                                width={1}
+                                height={1}
+                                priority
+                            />
+                        )}
+                        {filteredMembers[(currentIndex - 1 + filteredMembers.length) % filteredMembers.length] && (
+                            <Image
+                                src={filteredMembers[(currentIndex - 1 + filteredMembers.length) % filteredMembers.length].image}
+                                alt="preload"
+                                width={1}
+                                height={1}
+                                priority
+                            />
+                        )}
                     </div>
 
                     {/* 3. LAYER INFO: Positioning correctly at bottom */}
@@ -166,8 +188,15 @@ export default function Katalog() {
                     from { opacity: 0; transform: translateY(10px); }
                     to { opacity: 1; transform: translateY(0); }
                 }
+                @keyframes img-fade-in {
+                    from { opacity: 0; transform: scale(0.98) translateY(10px); }
+                    to { opacity: 1; transform: scale(1) translateY(0); }
+                }
                 .animate-fade-in {
                     animation: fade-in 0.8s ease-out forwards;
+                }
+                .animate-img-fade-in {
+                    animation: img-fade-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
                 }
             `}</style>
         </main>
