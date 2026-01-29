@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { FooterData } from '@/lib/data';
 
 interface FooterProps {

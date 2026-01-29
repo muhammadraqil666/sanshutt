@@ -17,7 +17,7 @@ export default function Hero({ data }: HeroProps) {
             setCurrentImage((prev) => (prev + 1) % images.length);
         }, 5000);
         return () => clearInterval(interval);
-    }, []);
+    }, [images.length]);
 
     return (
         <section className="relative w-full h-[100vh] min-h-[700px] flex flex-col items-center justify-center overflow-hidden bg-[#F4F9F6] bg-noise">

@@ -18,17 +18,14 @@ export default function Katalog() {
 
     // Handle search event from Navbar
     useEffect(() => {
-        const handleSearch = (e: any) => {
-            setSearchQuery(e.detail || '');
+        const handleSearch = (e: Event) => {
+            const customEvent = e as CustomEvent;
+            setSearchQuery(customEvent.detail || '');
+            setCurrentIndex(0); // Reset index directly here
         };
         window.addEventListener('nav-search', handleSearch);
         return () => window.removeEventListener('nav-search', handleSearch);
     }, []);
-
-    // Reset index when search query changes or if members list changes
-    useEffect(() => {
-        setCurrentIndex(0);
-    }, [searchQuery]);
 
     const nextMember = () => {
         if (filteredMembers.length === 0) return;
@@ -149,7 +146,7 @@ export default function Katalog() {
                 </>
             ) : (
                 <div className="flex flex-col items-center gap-6 animate-fade-in">
-                    <p className="font-serif italic text-2xl text-[#1a4a2e]/40">No members found matching "{searchQuery}"</p>
+                    <p className="font-serif italic text-2xl text-[#1a4a2e]/40">No members found matching &quot;{searchQuery}&quot;</p>
                     <button
                         onClick={() => setSearchQuery('')}
                         className="text-[10px] font-sans text-[#1a4a2e]/60 tracking-[0.4em] uppercase border border-[#1a4a2e]/10 px-8 py-3 rounded-full hover:bg-white transition-all"
