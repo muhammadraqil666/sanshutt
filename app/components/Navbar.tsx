@@ -74,9 +74,7 @@ export default function Navbar() {
                                     type="text"
                                     placeholder="Search team..."
                                     className="bg-white/10 border border-white/20 rounded-full py-2 px-6 pr-10 text-xs text-white focus:outline-none focus:bg-white/20 transition-all w-48"
-                                    onChange={(e) => {
-                                        // This will be handled by the page's event listener or shared state if needed
-                                        // For now, we'll dispatch a custom event that Katalog page can listen to
+                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                                         window.dispatchEvent(new CustomEvent('nav-search', { detail: e.target.value }));
                                     }}
                                 />
@@ -116,7 +114,7 @@ export default function Navbar() {
                             type="text"
                             placeholder="Search team..."
                             className="mt-2 w-full bg-white/10 border border-white/20 py-3 px-6 rounded-full text-xs text-white text-center focus:outline-none"
-                            onChange={(e) => {
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                                 window.dispatchEvent(new CustomEvent('nav-search', { detail: e.target.value }));
                             }}
                         />
