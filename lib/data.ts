@@ -67,7 +67,8 @@ export interface GalleryItem {
 }
 
 export interface KatalogData {
-    teamMembers: TeamMember[];
+    v1: TeamMember[];
+    v2: TeamMember[];
 }
 
 export interface SiteData {
@@ -145,7 +146,7 @@ export const siteData: SiteData = {
     // KATALOG SECTION
     // ============================================
     katalog: {
-        teamMembers: [
+        v1: [
             {
                 name: 'Adam',
                 role: 'The Visual Storyteller',
@@ -154,7 +155,7 @@ export const siteData: SiteData = {
             {
                 name: 'Aking',
                 role: 'The Archive Custodian',
-                image: ''
+                image: '/katalog-v1/a-aking.png'
             },
             {
                 name: 'Akuy',
@@ -169,12 +170,12 @@ export const siteData: SiteData = {
             {
                 name: 'Aldiyo',
                 role: 'The Visual Storyteller',
-                image: ''
+                image: '/katalog-v1/a-aldiyo.png'
             },
             {
                 name: 'Alief',
                 role: 'The Visual Storyteller',
-                image: ''
+                image: '/katalog-v1/a-alief.png'
             },
             {
                 name: 'Arif',
@@ -184,7 +185,7 @@ export const siteData: SiteData = {
             {
                 name: 'Dablu',
                 role: 'The Motion Maestro',
-                image: ''
+                image: '/katalog-v1/a-dablu.png'
             },
             {
                 name: 'Dino',
@@ -224,7 +225,7 @@ export const siteData: SiteData = {
             {
                 name: 'Ozan',
                 role: 'The Light Weaver',
-                image: ''
+                image: '/katalog-v1/a-ozan.png'
             },
             {
                 name: 'Rey',
@@ -245,6 +246,108 @@ export const siteData: SiteData = {
                 name: 'Ulul',
                 role: 'The Architect of Light',
                 image: '/katalog-v1/a-ulul.png'
+            }
+        ],
+        v2: [
+            {
+                name: 'Adam',
+                role: 'Executive Creative Director',
+                image: ''
+            },
+            {
+                name: 'Aking',
+                role: 'Chief of Operations',
+                image: ''
+            },
+            {
+                name: 'Akuy',
+                role: 'Principal Visual Architect',
+                image: ''
+            },
+            {
+                name: 'Aldi',
+                role: 'Senior Project Lead',
+                image: ''
+            },
+            {
+                name: 'Aldiyo',
+                role: 'Associate Director',
+                image: ''
+            },
+            {
+                name: 'Alief',
+                role: 'Digital Strategy Lead',
+                image: ''
+            },
+            {
+                name: 'Arif',
+                role: 'Technical Operations Manager',
+                image: ''
+            },
+            {
+                name: 'Dablu',
+                role: 'Head of Motion Graphics',
+                image: ''
+            },
+            {
+                name: 'Dino',
+                role: 'Brand Experience Manager',
+                image: ''
+            },
+            {
+                name: 'Fahmi',
+                role: 'Cinematic Arts Director',
+                image: ''
+            },
+            {
+                name: 'Faiz',
+                role: 'Senior Media Producer',
+                image: ''
+            },
+            {
+                name: 'Fikri',
+                role: 'Asset Strategy Director',
+                image: ''
+            },
+            {
+                name: 'Idin',
+                role: 'Production Associate',
+                image: ''
+            },
+            {
+                name: 'Ikal',
+                role: 'Corporate Communications',
+                image: ''
+            },
+            {
+                name: 'Iqbal',
+                role: 'Managing Director',
+                image: ''
+            },
+            {
+                name: 'Ozan',
+                role: 'Lighting & Mood Specialist',
+                image: ''
+            },
+            {
+                name: 'Rey',
+                role: 'Relations Manager',
+                image: ''
+            },
+            {
+                name: 'Showi',
+                role: 'Creative Content Specialist',
+                image: ''
+            },
+            {
+                name: 'Sultan',
+                role: 'Strategic Project Lead',
+                image: ''
+            },
+            {
+                name: 'Ulul',
+                role: 'Master of Visual Arts',
+                image: ''
             }
         ]
     },
